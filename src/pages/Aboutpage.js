@@ -4,10 +4,13 @@ import img1 from "../images/aboutimg1.png"
 import img2 from "../images/aboutimg2.png"
 import img3 from "../images/aboutimg3.jpg"
 import img4 from "../images/aboutimg4.jpg"
+import '../css/Aboutpage.css'
+import BottomNavbar from '../components/BottomNavbar'
 const Aboutpage = () => {
   return (
     <div>
       <Navbar />
+      <BottomNavbar/>
       <div className='about-container'>
       <div class="about-intro">
         <h2>OUR MISSION</h2>

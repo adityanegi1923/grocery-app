@@ -1,0 +1,35 @@
+.bottom-nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    background-color:#00425A;
+    height:5vh;
+    width:100%;
+    color: white;
+    position:sticky;
+    top: 0;
+  }
+ .Parent:hover>ul {
+	display: block;
+	position: absolute;
+}
+.bottom-nav-container li:hover{
+    background-color:#2F58CD;
+}
+ .Child{
+    display:none;
+ }
+ .Child li {
+        background-color:#2F58CD;
+        line-height: 40px;
+        width: 30vh;
+        left:0;
+        transition:0.5s;
+}
+.Child li:hover {
+	background-color: #95B4CA;
+}
+
+.Parent li:hover {
+	background-color: #3795BD;
+}

@@ -5,8 +5,7 @@ import Loginpage from './pages/Loginpage';
 import Contactpage from './pages/Contactpage';
 import Homepage from './pages/Homepage';
 import Aboutpage from './pages/Aboutpage';
-import $ from 'jquery';
-import Popper from 'popper.js';
+import Shoppingcart from './pages/shoppingcart'
 function App() {
   return (
     <div className="App">
@@ -16,6 +15,7 @@ function App() {
       <Route path='/' element={<Homepage />} />
       <Route path='/contactpage' element={<Contactpage />} />
       <Route path='/aboutpage' element={<Aboutpage />} />
+      <Route path='/shoppingcart' element={<Shoppingcart />} />
     </Routes>
     </div>
   );

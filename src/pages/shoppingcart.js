@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import BottomNavbar from '../components/BottomNavbar'
-const Homepage = () => {
+const Shoppingcart = () => {
   return (
     <div>
       <Navbar />
@@ -10,4 +10,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage
+export default Shoppingcart
