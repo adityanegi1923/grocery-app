@@ -108,7 +108,7 @@ nav .menu span {
   border: none;
   font-size: 17px;
   border-radius:13px;
-  background-color:black;
+  background-color:white;
   color:whitesmoke;
 }
 .search-container input::placeholder {
