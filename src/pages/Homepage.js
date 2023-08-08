@@ -1,12 +1,35 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import BottomNavbar from '../components/BottomNavbar'
+import Footer from '../components/Footer'
+import img from '../images/Whitebasket.png'
+import '../css/Homepage.css'
 const Homepage = () => {
   return (
     <div>
       <Navbar />
       <BottomNavbar />
-    </div>
+      <div className="groceries-home">
+        <div className="landing1">
+          <div className="body1">
+            <div className="title1">
+              <b className="lets-now-shop-for-container1">
+                <p className="lets-now-shop1">Let’s now shop</p>
+                <p className="lets-now-shop1">For daily food</p>
+                <p className="lets-now-shop1">{`& necessary.`}</p>
+              </b>
+              <div className="freshness-and-speed1">
+                Freshness and Speed at your Fingertips: Get groceries delivered in
+                30 Minutes with our website or mobile app.
+              </div>
+              <button>Order Now</button>
+            </div>
+          </div>
+          <img className="landing-icon" alt="" src={img} />
+        </div>
+      </div>
+      <Footer />
+    </div >
   )
 }
 

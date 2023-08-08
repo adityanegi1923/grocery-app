@@ -6,6 +6,7 @@ import img3 from "../images/aboutimg3.jpg"
 import img4 from "../images/aboutimg4.jpg"
 import '../css/Aboutpage.css'
 import BottomNavbar from '../components/BottomNavbar'
+import Footer from '../components/Footer'
 const Aboutpage = () => {
   return (
     <div>
@@ -108,6 +109,7 @@ const Aboutpage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

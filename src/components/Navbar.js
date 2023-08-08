@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
             <div class="search-container">
                 <form>
-                    <input type="text" placeholder="Search..." />
+                    <input type="text" placeholder="  Search here" />
                 </form>
             </div>
             <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
