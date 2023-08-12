@@ -7,11 +7,12 @@ import img4 from "../images/aboutimg4.jpg"
 import '../css/Aboutpage.css'
 import BottomNavbar from '../components/BottomNavbar'
 import Footer from '../components/Footer'
+import ProductCard from '../components/ProductCard'
 const Aboutpage = () => {
   return (
     <div>
       <Navbar />
-      <BottomNavbar/>
+      <BottomNavbar />
       <div className='about-container'>
       <div class="about-intro">
         <h2>OUR MISSION</h2>

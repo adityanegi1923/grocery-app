@@ -1,3 +1,4 @@
+import ProductCarousel from '../components/ProductCarousel';
 import React from 'react'
 import Navbar from '../components/Navbar'
 import BottomNavbar from '../components/BottomNavbar'
@@ -16,21 +17,26 @@ const Homepage = () => {
               <b className="lets-now-shop-for-container1">
                 <p className="lets-now-shop1">Let’s now shop</p>
                 <p className="lets-now-shop1">For daily food</p>
-                <p className="lets-now-shop1">{`& necessary.`}</p>
+                <p className="lets-now-shop1">& necessary.</p>
               </b>
               <div className="freshness-and-speed1">
                 Freshness and Speed at your Fingertips: Get groceries delivered in
                 30 Minutes with our website or mobile app.
               </div>
-              <button>Order Now</button>
+              <button class="button">
+                <span class="button-content"><b>Order Now</b></span>
+              </button>
             </div>
           </div>
           <img className="landing-icon" alt="" src={img} />
         </div>
       </div>
+      <div className="product-card-container">
+        <ProductCarousel />
+      </div>
       <Footer />
     </div >
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;

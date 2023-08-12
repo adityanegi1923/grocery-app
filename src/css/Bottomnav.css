@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items:center;
-    background-color:#00425A;
+    background:#00425A;
     height:5vh;
     width:100%;
     color: white;
@@ -10,12 +10,22 @@
     top: 0;
   }
  .Parent:hover>ul {
-	display: block;
-	position: absolute;
+    display: block;
+    position: absolute;
 }
 .bottom-nav-container li:hover{
     background-color:#2F58CD;
 }
+.bottom-nav-container ul li a{ 
+    color:white;
+}
+.Parent ul li {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+  }
  .Child{
     display:none;
  }
@@ -27,9 +37,9 @@
         transition:0.5s;
 }
 .Child li:hover {
-	background-color: #95B4CA;
+    background-color: #95B4CA;
 }
 
 .Parent li:hover {
-	background-color: #3795BD;
+    background-color: #3795BD;
 }

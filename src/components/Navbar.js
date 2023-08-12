@@ -12,10 +12,9 @@ const Navbar = () => {
             <Link to="/" className="title">
                 <img alt='' id="logo" src={logo} />
             </Link>
-            <div class="search-container">
-                <form>
-                    <input type="text" placeholder="  Search here" />
-                </form>
+            <div class="search">
+                <input placeholder="Search..." type="text" />
+                    <button type="submit">Go</button>
             </div>
             <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
                 <span></span>
@@ -27,17 +26,17 @@ const Navbar = () => {
                     <NavLink to='/shoppingcart'><FaShoppingBasket /></NavLink>
                 </li>
                 <li>
-                    <NavLink to="/aboutpage">About</NavLink>
+                    <NavLink to="/aboutpage"><b>About</b></NavLink>
                 </li>
                 <li>
-                    <NavLink to="/contactpage">Contact</NavLink>
+                    <NavLink to="/contactpage"><b>Contact</b></NavLink>
                 </li>
                 <li>
-                    <NavLink to='/login'>Logout</NavLink>
+                    <NavLink to='/login'><b>Logout</b></NavLink>
                 </li>
             </ul>
         </nav>
     )
 }
 
-export default Navbar
+export default Navbar;
