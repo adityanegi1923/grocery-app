@@ -23,7 +23,7 @@ const Navbar = () => {
             </div>
             <ul className={menuOpen ? "open" : ""}>
                 <li>
-                    <NavLink to='/shoppingcart'><FaShoppingBasket /></NavLink>
+                    <NavLink to='/shoppingcart'><FaShoppingBasket style={{marginTop:"5px"}}/></NavLink>
                 </li>
                 <li>
                     <NavLink to="/aboutpage"><b>About</b></NavLink>

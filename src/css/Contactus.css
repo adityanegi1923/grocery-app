@@ -80,12 +80,12 @@ p1{
     width: 40%;
 }
 .icon-circle{
-    flex: 0 1 40px; /* Adjust this value according to your needs */
+    flex: 0 1 40px; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
-    width: 40px; /* Set a fixed width to ensure a square container */
+    width: 40px; 
     border-radius: 50%;
     transition: .3s all ease-in-out;
     color: white;
@@ -108,17 +108,17 @@ p1{
     left: 80px;
     top: 49px;
     position: relative;
-    width: 200px; /* half of width*/
+    width: 200px;
     height: 200px; 
     border-radius: 2000px 10px 17px 20px;
     z-index: 1;
         
    }
    .dot-2{
-    background-color: rgba(128, 128, 128, 0.5); /* Gray with 50% opacity */
+    background-color: rgba(128, 128, 128, 0.5);
     display: inline-block;
-    left: 630px;
-    top: 660px;
+    left: 450px;
+    top: 550px;
     position: absolute;
     width: 150px;
     height: 150px;
@@ -173,7 +173,7 @@ label{
     background: none;
 }
 .inputfields:focus + .label {
-    font-size: 1.1rem; /* Increase font size */
+    font-size: 1.1rem; 
     color: black;
 }
 

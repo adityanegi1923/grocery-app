@@ -15,9 +15,6 @@ const BottomNavbar = () => {
                 </div>
                 <ul className={menuOpen ? "open" : ""}>
                     <li>
-                        <NavLink to="/contact"><FaTag />   Offers</NavLink >
-                    </li>
-                    <li>
                         <NavLink className="Parent" to="/contact">Fresh-Vegetables
                             <ul className="Child">
                                 <li>Potato , Onions & Tomatoes </li>

@@ -86,6 +86,10 @@ import { Button, Col, Form, Image, ListGroup, Row } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { CartState } from "../components/Context";
 import "../css/Shoppingcart.css";
+import Navbar from "../components/Navbar";
+import BottomNavbar from "../components/BottomNavbar";
+import Footer from "../components/Footer";
+import { FaFileExcel } from "react-icons/fa";
 
 const Cart = () => {
   const {
@@ -99,16 +103,25 @@ const Cart = () => {
       cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
     );
   }, [cart]);
-
+  const cartstyle={
+    cartinside : {
+    display: "flex",
+    alignItems: "center",
+    justifyContent:"space-between",
+    }
+  }
   return (
+    <>
+    <Navbar />
+    <BottomNavbar />
     <div className="cart-container">
       <div className="product-container">
         <ListGroup>
           {cart.map((prod) => (
             <ListGroup.Item key={prod.id} className="product-item">
-              <Row>
+              <Row style={cartstyle.cartinside}>
                 <Col md={2}>
-                  <Image src={prod.image} alt={prod.name} fluid rounded />
+                  <Image style={{height:'8rem'}} src={prod.image} alt={prod.name} fluid rounded />
                 </Col>
                 <Col md={2}>
                   <span className="product-name">{prod.name}</span>
@@ -163,6 +176,8 @@ const Cart = () => {
         </Button>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
