@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import '../css/ProductCard.css';
 
 const ProductCard = ({ title, subtitle, price, initialCounter }) => {
@@ -41,6 +41,56 @@ const ProductCard = ({ title, subtitle, price, initialCounter }) => {
                     <path transform="matrix(.7071068 -.7071068 .7071068 .7071068 4.654437 15.986806)" fill="#fed4a3" d="m20.533957 1.814287h2.182087v1.121427h-2.182087z"></path>
                     <path fill="url(#a)" d="m23.8535156 1.6464844-1.5-1.5c-.1953125-.1953125-.5117188-.1953125-.7070312 0l-1.9173584 1.9173584c-.1885986-.098999-.4240723-.0759277-.5826416.0826416l-3.7880859 3.7880859c-1.9462891-.5317383-4.0078125.0078125-5.4482422 1.4477539l-9.0566406 9.0571289c-.5507813.5498047-.8535157 1.2817383-.8535157 2.0605469s.3027344 1.5107422.8535156 2.0605469l2.5859375 2.5859375c.5507813.5502929 1.2832031.8535156 2.0605469.8535156s1.5097656-.3032227 2.0605469-.8535156l9.0566406-9.0571289c1.4404297-1.4394531 1.9814453-3.5014648 1.4482422-5.4477539l3.7880859-3.7880859c.1585693-.1585693.1816406-.394043.0826416-.5826416l1.9173584-1.9173584c.1953125-.1953126.1953125-.5117188 0-.7070313z"></path>
                 </svg>
+            </div>
+            <div className="card__title">{title}</div>
+            <div className="card__subtitle">{subtitle}</div>
+            <div className="card__wrapper">
+                <div className="card__price">₹{price.toFixed(2)}</div>
+                <div className="card__counter">
+                    <button className="card__btn" onClick={decrementCounter}>-</button>
+                    <div className="card__counter-score">{counter}</div>
+                    <button className="card__btn card__btn-plus" onClick={incrementCounter}>+</button>
+                </div>
+            </div>
+            <div className="card__button-container">
+                <div class="button">
+                    <div class="button-wrapper">
+                        <div class="text">Buy Now</div>
+                        <span class="icon">
+                            <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductCard;
+*/
+
+import React, { useState } from 'react';
+import '../css/ProductCard.css';
+
+const ProductCard = ({ title, subtitle, price, initialCounter, imageSrc }) => {
+    const [counter, setCounter] = useState(initialCounter);
+
+    const decrementCounter = () => {
+        if (counter > 0) {
+            setCounter(counter - 1);
+        }
+    };
+
+    const incrementCounter = () => {
+        setCounter(counter + 1);
+    };
+
+    return (
+        <div className="card">
+            <div className="card__img">
+                <img src={imageSrc} alt="Product" className="product-image" />
             </div>
             <div className="card__title">{title}</div>
             <div className="card__subtitle">{subtitle}</div>

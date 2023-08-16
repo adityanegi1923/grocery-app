@@ -31,6 +31,7 @@
     background: linear-gradient(90deg, #FFF8F7, #F0F7DF);
     border-radius: 100%;
     margin-inline: auto;
+    overflow: hidden;
   }
   
   .card__img svg {

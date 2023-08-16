@@ -23,7 +23,7 @@ const Homepage = () => {
                 Freshness and Speed at your Fingertips: Get groceries delivered in
                 30 Minutes with our website or mobile app.
               </div>
-              <button class="button">
+              <button class="button1">
                 <span class="button-content"><b>Order Now</b></span>
               </button>
             </div>

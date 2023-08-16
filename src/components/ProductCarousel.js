@@ -1,7 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
-import ProductCard from './ProductCard'; // Make sure to import your ProductCard component
-import productData from '../cards/productData.json';
+import ProductCard from './ProductCard';
+import productData from '../cards/productData.js';
+import { Link } from 'react-router-dom';
 import '../css/ProductCarousel.css';
 
 import 'slick-carousel/slick/slick.css';
@@ -46,10 +47,15 @@ const ProductCarousel = () => {
           {productData.map((product, index) => (
             <div key={index} className="demos">
               <ProductCard
-                title={product.title}
+                title={
+                  <Link to={`/product/${index}`} className="product-link">
+                    {product.title}
+                  </Link>
+                }
                 subtitle={product.subtitle}
                 price={product.price}
                 initialCounter={1}
+                imageSrc={product.imageSrc}
               />
             </div>
           ))}
