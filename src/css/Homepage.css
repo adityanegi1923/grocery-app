@@ -67,7 +67,6 @@
   margin-top: 20px;
 }
 
-.groceries-home
 
 .landing1 {
   display: flex;
@@ -87,7 +86,7 @@
 
 .groceries-home {
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-77xl);

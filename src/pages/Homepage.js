@@ -17,7 +17,7 @@ const Homepage = () => {
               <b className="lets-now-shop-for-container1">
                 <p className="lets-now-shop1">Let’s now shop</p>
                 <p className="lets-now-shop1">For daily food</p>
-                <p className="lets-now-shop1">& necessary.</p>
+                <p className="lets-now-shop1">& necessities.</p>
               </b>
               <div className="freshness-and-speed1">
                 Freshness and Speed at your Fingertips: Get groceries delivered in
