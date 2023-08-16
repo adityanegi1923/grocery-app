@@ -31,6 +31,9 @@ const Homepage = () => {
           <img className="landing-icon" alt="" src={img} />
         </div>
       </div>
+      <div className='title2'>
+        <p className="lets-now-shop1" style={{fontSize:"3rem"}}>Best Sellers</p>
+      </div>
       <div className="product-card-container">
         <ProductCarousel />
       </div>
