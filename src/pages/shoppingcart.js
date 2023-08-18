@@ -1,184 +1,117 @@
-/*import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Image, ListGroup, Row } from "react-bootstrap";
-import { AiFillDelete } from "react-icons/ai";
-import { CartState } from "../components/Context";
-
+import React, { useContext, useEffect } from 'react';
+import cartContext from '../components/cartContext';
+import Homepage from '../pages/Homepage';
 const Cart = () => {
-  const {
-    state: { cart },
-    dispatch,
-  } = CartState();
-  const [total, setTotal] = useState();
+    const { isCartOpen, cartItems, toggleCart, removeItem, incrementItem, decrementItem } = useContext(cartContext);
+    // disable the body-scroll when the Cart is open
+    /*useEffect(() => {
+        const docBody = document.body;
 
-  useEffect(() => {
-    setTotal(
-      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
+        isCartOpen ? (
+            docBody.classList.add('overflow_hide')
+        ) : (
+            docBody.classList.remove('overflow_hide')
+        );
+
+    }, [isCartOpen]);*/
+    // closing the Cart on clicking outside of it
+    useEffect(() => {
+        const outsideClose = (e) => {
+            if (e.target.id === 'cart') {
+                toggleCart(false);
+            }
+        };
+
+        window.addEventListener('click', outsideClose);
+
+        return () => {
+            window.removeEventListener('click', outsideClose);
+        };
+    }, [toggleCart]);
+
+
+    const cartQuantity = cartItems.length;
+
+    const cartTotal = cartItems.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
+
+
+    return (
+        <>
+            <Homepage />
+            {
+                isCartOpen && (
+                    <div id="cart">
+                        <div className="cart_content">
+                            <div className="cart_head">
+                                <h2>Cart <small>({cartQuantity})</small></h2>
+                                <div
+                                    title="Close"
+                                    className="close_btn"
+                                    onClick={() => toggleCart(false)}
+                                >
+                                    <span>&times;</span>
+                                </div>
+                            </div>
+
+                            <div className="cart_body">
+                                {
+                                    cartQuantity === 0 ? (
+                                        <h2>Cart is empty</h2>
+                                    ) : (
+                                        cartItems.map(item => {
+                                            const { id, img, title, price, quantity } = item;
+                                            const itemTotal = price * quantity;
+
+                                            return (
+                                                <div className="cart_items" key={id}>
+                                                    <figure className="cart_items_img">
+                                                        <img src={img} alt="product-img" />
+                                                    </figure>
+
+                                                    <div className="cart_items_info">
+                                                        <h4>{title}</h4>
+                                                        <h3 className="price">₹ {itemTotal.toLocaleString()}</h3>
+                                                    </div>
+
+                                                    <div className="cart_items_quantity">
+                                                        <span onClick={() => decrementItem(id)}>&#8722;</span>
+                                                        <b>{quantity}</b>
+                                                        <span onClick={() => incrementItem(id)}>&#43;</span>
+                                                    </div>
+
+                                                    <div
+                                                        title="Remove Item"
+                                                        className="cart_items_delete"
+                                                        onClick={() => removeItem(id)}
+                                                    >
+                                                        <span>&times;</span>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
+                                    )}
+                            </div>
+
+                            <div className="cart_foot">
+                                <h3>
+                                    <small>Total:</small>
+                                    <b>₹ {cartTotal.toLocaleString()}</b>
+                                </h3>
+
+                                <button
+                                    type="button"
+                                    className="checkout_btn"
+                                    disabled={cartQuantity === 0}
+                                >
+                                    Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        </>
     );
-  }, [cart]);
-
-  return (
-    <div className="home">
-      <div className="productContainer">
-        <ListGroup>
-          {cart.map((prod) => (
-            <ListGroup.Item key={prod.id}>
-              <Row>
-                <Col md={2}>
-                  <Image src={prod.image} alt={prod.name} fluid rounded />
-                </Col>
-                <Col md={2}>
-                  <span>{prod.name}</span>
-                </Col>
-                <Col md={2}>₹ {prod.price}</Col>
-                <Col md={2}>
-                  <Form.Control
-                    as="select"
-                    value={prod.qty}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "CHANGE_CART_QTY",
-                        payload: {
-                          id: prod.id,
-                          qty: Number(e.target.value),
-                        },
-                      })
-                    }
-                  >
-                    {[...Array(prod.inStock).keys()].map((x) => (
-                      <option key={x + 1}>{x + 1}</option>
-                    ))}
-                  </Form.Control>
-                </Col>
-                <Col md={2}>
-                  <Button
-                    type="button"
-                    variant="light"
-                    onClick={() =>
-                      dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: prod,
-                      })
-                    }
-                  >
-                    <AiFillDelete fontSize="20px" />
-                  </Button>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </div>
-      <div className="filters summary">
-        <span className="title">Subtotal ({cart.length}) items</span>
-        <span style={{ fontWeight: 700, fontSize: 20 }}>Total: ₹ {total}</span>
-        <Button type="button" disabled={cart.length === 0}>
-          Proceed to Checkout
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-export default Cart;
-*/
-import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Image, ListGroup, Row } from "react-bootstrap";
-import { AiFillDelete } from "react-icons/ai";
-import { CartState } from "../components/Context";
-import "../css/Shoppingcart.css";
-import Navbar from "../components/Navbar";
-import BottomNavbar from "../components/BottomNavbar";
-import Footer from "../components/Footer";
-import { FaFileExcel } from "react-icons/fa";
-
-const Cart = () => {
-  const {
-    state: { cart },
-    dispatch,
-  } = CartState();
-  const [total, setTotal] = useState();
-
-  useEffect(() => {
-    setTotal(
-      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
-    );
-  }, [cart]);
-  const cartstyle={
-    cartinside : {
-    display: "flex",
-    alignItems: "center",
-    justifyContent:"space-between",
-    }
-  }
-  return (
-    <>
-    <Navbar />
-    <BottomNavbar />
-    <div className="cart-container">
-      <div className="product-container">
-        <ListGroup>
-          {cart.map((prod) => (
-            <ListGroup.Item key={prod.id} className="product-item">
-              <Row style={cartstyle.cartinside}>
-                <Col md={2}>
-                  <Image style={{height:'8rem'}} src={prod.image} alt={prod.name} fluid rounded />
-                </Col>
-                <Col md={2}>
-                  <span className="product-name">{prod.name}</span>
-                </Col>
-                <Col md={2}>₹ {prod.price}</Col>
-                <Col md={2}>
-                  <Form.Control
-                    as="select"
-                    value={prod.qty}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "CHANGE_CART_QTY",
-                        payload: {
-                          id: prod.id,
-                          qty: Number(e.target.value),
-                        },
-                      })
-                    }
-                  >
-                    {[...Array(prod.inStock).keys()].map((x) => (
-                      <option key={x + 1}>{x + 1}</option>
-                    ))}
-                  </Form.Control>
-                </Col>
-                <Col md={2}>
-                  <Button
-                    type="button"
-                    variant="light"
-                    onClick={() =>
-                      dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: prod,
-                      })
-                    }
-                    className="delete-button"
-                  >
-                    <AiFillDelete fontSize="20px" />
-                  </Button>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </div>
-      <div className="summary">
-        <span className="summary-title">
-          Subtotal ({cart.length}) items
-        </span>
-        <span className="total-amount">Total: ₹ {total}</span>
-        <Button type="button" disabled={cart.length === 0} className="checkout-button">
-          Proceed to Checkout
-        </Button>
-      </div>
-    </div>
-    <Footer />
-    </>
-  );
 };
 
 export default Cart;

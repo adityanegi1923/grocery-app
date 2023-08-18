@@ -2,7 +2,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import ProductCard from './ProductCard';
 import productData from '../cards/productData.js';
-import { Link } from 'react-router-dom';
 import '../css/ProductCarousel.css';
 
 import 'slick-carousel/slick/slick.css';
@@ -44,21 +43,11 @@ const ProductCarousel = () => {
     <div className="product-carousel-container">
       <div className="product-carousel">
         <Slider {...settings}>
-          {productData.map((product, index) => (
-            <div key={index} className="demos">
-              <ProductCard
-                title={
-                  <Link to={`/product/${index}`} className="product-link">
-                    {product.title}
-                  </Link>
-                }
-                subtitle={product.subtitle}
-                price={product.price}
-                initialCounter={1}
-                imageSrc={product.imageSrc}
-              />
-            </div>
-          ))}
+          {
+            productData.map((item) => (
+            <ProductCard key = {item.id} {...item} />
+            ))
+          }
         </Slider>
       </div>
     </div>

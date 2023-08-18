@@ -1,15 +1,14 @@
 import 'tailwindcss/tailwind.css';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 import productData from '../cards/productData';
-import { CartState } from '../components/Context';
+import cartContext from '../components/cartContext';
 
 const ProductPage = () => {
-  const { productId } = useParams(); 
-  const products = productData;
-  const product = products[productId]; 
-  const { dispatch } = CartState();
-  
+  const { productId } = useParams();
+  const product = productData[productId];
+  const { cartItems, addItem, incrementItem, decrementItem } = useContext(cartContext);
   const [images, setImages] = useState({
     img1: product.img1,
     img2: product.img2,
@@ -20,66 +19,39 @@ const ProductPage = () => {
   const [activeImg, setActiveImage] = useState(images.img1);
   const [amount, setAmount] = useState(product.initialCounter);
 
-  const handleAddToCart = () => {
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: {
-        id: product.id,
-        name: product.title,
-        price: product.price,
-        image: product.imageSrc,
-        qty: amount,
-      },
-    });
-  };
-
   return (
-    <div className='flex justify-center items-center p-8'>
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-center w-full max-w-screen-xl'>
-        <div className='flex flex-col gap-6'>
-          <img src={activeImg} alt="" className='w-full h-full aspect-square object-cover rounded-xl' />
-          <div className='flex justify-between space-x-4'>
-            {Object.values(images).map((imgSrc, index) => (
-              <img
-                key={index}
-                src={imgSrc}
-                alt={`Image ${index}`}
-                className='w-24 h-24 rounded-md cursor-pointer'
-                onClick={() => setActiveImage(imgSrc)}
-              />
-            ))}
-          </div>
+    <div className='flex flex-col lg:flex-row gap-16 items-center'>
+      <div className='flex flex-col gap-6 lg:w-2/4'>
+        <img src={activeImg} alt={product.title} className='w-full h-full aspect-square object-cover rounded-xl' />
+        <div className='flex justify-between h-24'>
+          {Object.keys(images).map((imgKey) => (
+            <img
+              key={imgKey}
+              src={images[imgKey]}
+              alt={`Image ${imgKey}`}
+              className='w-24 h-24 rounded-md cursor-pointer'
+              onClick={() => setActiveImage(images[imgKey])}
+            />
+          ))}
         </div>
-        <div className='flex flex-col gap-4'>
-          <div>
-            <span className='text-violet-600 font-semibold'>{product.title}</span>
-            <h1 className='text-3xl font-bold'>{product.subtitle}</h1>
+      </div>
+      <div className='flex flex-col gap-4 lg:w-2/4'>
+        <div>
+          <span className='text-violet-600 font-semibold'>{product.title}</span>
+          <h1 className='text-3xl font-bold'>{product.subtitle}</h1>
+        </div>
+        <p className='text-gray-700'>
+          {product.description}
+        </p>
+        <h6 className='text-2xl font-semibold'>₹ {product.price.toFixed(2)}</h6>
+        <div className='flex items-center gap-12'>
+          <div className='flex items-center'>
+            <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => decrementItem(productId)}>−</button>
+            <span className='py-4 px-6 rounded-lg'>{amount}</span>
+            <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => incrementItem(productId)}>+</button>
           </div>
-          <p className='text-gray-700'>{product.description}</p>
-          <h6 className='text-2xl font-semibold'>₹ {product.price.toFixed(2)}</h6>
-          <div className='flex items-center space-x-12'>
-            <div className='flex items-center space-x-4'>
-              <button
-                className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl'
-                onClick={() => setAmount((prev) => Math.max(prev - 1, 0))}
-              >
-                -
-              </button>
-              <span className='py-4 px-6 rounded-lg'>{amount}</span>
-              <button
-                className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl'
-                onClick={() => setAmount((prev) => prev + 1)}
-              >
-                +
-              </button>
-            </div>
-            <button
-              className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl'
-              onClick={handleAddToCart}
-            >
-              Add to Cart
-            </button>
-          </div>
+
+          <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl' onClick={() => addItem(product)}>Add to Cart</button>
         </div>
       </div>
     </div>
