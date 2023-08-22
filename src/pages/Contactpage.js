@@ -1,10 +1,28 @@
-import React from "react";
+import React,{useRef} from "react";
 import Navbar from "../components/Navbar";
 import BottomNavbar from "../components/BottomNavbar";
 import "../css/Contactus.css";
 import imgplane from "../images/plane.jpg"
+import Footer from '../components/Footer'
+import emailjs from '@emailjs/browser';
+
+
 
 const Contactpage = () => {
+  const form = useRef () 
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_c1oragd', 'template_w02lute', form.current, 'fE0WWZuFp4Phs4PJU')
+      .then((result) => {
+          console.log(result.text);
+          alert("Message sent Succesfully")
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
   return (
     <div>
       <head>
@@ -28,7 +46,7 @@ const Contactpage = () => {
             <p>Say Something to start a live chat! </p>
             <div className="icon-text">
               <i class="fa-solid fa-phone"></i>
-              <span>987654321</span>
+              <span>+91987654321</span>
             </div>
             <div className="icon-text">
               <i class="fa-solid fa-envelope"></i>
@@ -57,25 +75,25 @@ const Contactpage = () => {
               </div>
             </div>
           </div>
-          <form>
+          <form ref={form} onSubmit={sendEmail}>
             <div className="col-2">
               <div className="form-group">
                 <label htmlFor="">First Name</label>
-                <input type="text" className="inputfields" required />
+                <input type="text" className="inputfields" name="user_fname" required />
               </div>
               <div className="form-group">
                 <label htmlFor="">Last Name</label>
-                <input type="text" className="inputfields" required />
+                <input type="text" className="inputfields" name="user_lname" required />
               </div>
             </div>
             <div className="col-2">
               <div className="form-group">
                 <label htmlFor="">Email</label>
-                <input type="email" className="inputfields" required />
+                <input type="email" className="inputfields" name="user_email" required />
               </div>
               <div className="form-group">
                 <label htmlFor="">Phone Number</label>
-                <input type="tel" className="inputfields" required />
+                <input type="tel" className="inputfields" name="user_phone" required />
               </div>
             </div>
             <div className="col-2">
@@ -85,16 +103,17 @@ const Contactpage = () => {
                   type="text"
                   className="inputfields"
                   placeholder="Write your message.."
+                  name="user_message"
                   required
                 />
               </div>
             </div>
-            <button className="contactbutton">Send Message</button>
+            <input type="submit" className="contactbutton" id="btttn" value="Send Message"/>
             <img className="aeroplane" alt="" src={imgplane} />
           </form>
         </div>
       </div>
-      <br/>
+      <Footer/>
     </div>
 
   );

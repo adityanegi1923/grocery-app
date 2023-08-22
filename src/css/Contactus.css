@@ -6,8 +6,11 @@
     font-family: arial;
     
 }
-h1{
-    font-size:40px;
+
+.contact-page h1{
+    padding-top: 1rem;
+    font-size:50px;
+    color:white ;
 }
 p1{
     margin-top: 0;
@@ -106,7 +109,7 @@ p1{
     background-color: black;
     display: inline-block;
     left: 80px;
-    top: 49px;
+    top: 52px;
     position: relative;
     width: 200px;
     height: 200px; 
@@ -118,7 +121,7 @@ p1{
     background-color: rgba(128, 128, 128, 0.5);
     display: inline-block;
     left: 630px;
-    top: 550px;
+    top: 660px;
     position: absolute;
     width: 150px;
     height: 150px;
@@ -181,11 +184,11 @@ label{
     padding-right: 0;
 }
 
-.contactbutton{
-    padding: 15px 50px 15px 50px;
+#btttn{
+    padding: 14px 50px 10px 50px;
     color: white;
     font-size: 1rem;
-    background-color: black;
+    background-color:black;
     cursor: pointer;
     border-radius: 10px;
     align-items: end;
