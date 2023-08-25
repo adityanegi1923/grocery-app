@@ -37,6 +37,7 @@ const Navbar = () => {
                         </div>
                     </NavLink>
                 </li>
+                
                 <li>
                     <NavLink to="/aboutpage"><b>About</b></NavLink>
                 </li>
@@ -45,6 +46,9 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink to='/login'><b>Logout</b></NavLink>
+                </li>
+                <li>
+                    <NavLink to="/AdminPage"><b>Admin</b></NavLink>
                 </li>
             </ul>
         </nav>

@@ -6,6 +6,13 @@
     font-family: arial;
     
 }
+@media screen and (max-width: 768px) {
+    .contact-info {
+      flex-direction: column;
+      padding: 20px; /* Adjust padding for smaller screens */
+      /* ... other styles ... */
+    }
+  }
 
 .contact-page h1{
     padding-top: 1rem;
@@ -20,8 +27,9 @@ p1{
 #contact-container{
  display: flex;
  background: white;
- width: 1200px;
- border-radius: 15px;
+ max-width: 70%;
+width: auto;
+border-radius: 15px;
  padding: 10px;
  -webkit-box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.75);
  -moz-box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.75);
@@ -76,12 +84,12 @@ p1{
         line-height:.8em;
         letter-spacing: -.6px;  
 }
-.social-media{
-    margin-top: 10rem;
+.social-media {
     display: flex;
-    justify-content: space-between;
-    width: 40%;
-}
+    justify-content: center; /* Center icons horizontally */
+    margin-top: 1rem; /* Adjust spacing */
+  }
+  
 .icon-circle{
     flex: 0 1 40px; 
     display: flex;
@@ -108,25 +116,18 @@ p1{
 
     background-color: black;
     display: inline-block;
-    left: 80px;
+    left: 116px;
     top: 52px;
     position: relative;
     width: 200px;
     height: 200px; 
-    border-radius: 2000px 10px 17px 20px;
+    border-radius: 2000px 90px 180px 90px;
     z-index: 1;
+    @media screen and (max-width: 768px) {
+        left: auto;
+        right: 80px;
+      }
         
-   }
-   .dot-2{
-    background-color: rgba(128, 128, 128, 0.5);
-    display: inline-block;
-    left: 630px;
-    top: 660px;
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 100px 100px 100px 100px;
-    z-index: 2;
    }
 
 form{
@@ -155,6 +156,10 @@ label{
     margin-bottom:  .8rem;
     color: gray;
     transition: all 0.2s ease-in-out;
+    @media screen and (max-width: 768px) {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
 }
 
 .inputfields{
@@ -204,8 +209,15 @@ label{
 .aeroplane{
     position: relative;
     height: 200px;
-    width: 300px;
+    width: 50%;
     top: 52px;
-   right: -130px;
+   right: -150px;
+
+   @media screen and (max-width: 768px) {
+    height: 150px; /* Adjust the height for smaller screens */
+    width: auto; /* Allow the width to scale based on the height */
+    top: 20px; /* Adjust the vertical position */
+    right: 0; /* Reset the horizontal position */
+  }
 }
  

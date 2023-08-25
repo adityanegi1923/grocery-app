@@ -7,7 +7,6 @@ import img4 from "../images/aboutimg4.jpg"
 import '../css/Aboutpage.css'
 import BottomNavbar from '../components/BottomNavbar'
 import Footer from '../components/Footer'
-import ProductCard from '../components/ProductCard'
 const Aboutpage = () => {
   return (
     <div>

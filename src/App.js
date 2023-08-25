@@ -8,6 +8,9 @@ import Homepage from './pages/Homepage';
 import Aboutpage from './pages/Aboutpage';
 import Cart from './pages/shoppingcart';
 import ProductPage from './pages/ProductPage';
+import AdminPage from './pages/AdminPage';
+import Deliveryorder from './pages/Deliveryorder';
+
 
 function App() {
   return (
@@ -19,6 +22,8 @@ function App() {
           <Route path="/shoppingcart" element={<Cart />} />
           <Route path="/contactpage" element={<Contactpage />} />
           <Route path="/aboutpage" element={<Aboutpage />} />
+          <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="/deliveryorder" element={<Deliveryorder/>} />
           <Route path="/product/:productId" element={<ProductPage />} />
       </Routes>
     </div>
